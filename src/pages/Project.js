@@ -46,7 +46,7 @@ const Project = () => {
           </h>
         </div>
         <div className="flex gap-2 font-semibold text-xl items-center px-4 my-16 text-gray-600">
-          <Link to="/">Home</Link>
+          <Link to="/#projects">Home</Link>
           <p>/</p>
           <p className="text-white">{projectInfo.title}</p>
         </div>
