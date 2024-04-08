@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  /* background-color: #10002b; */
+  margin: 0;
+  scroll-behavior: smooth;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+.projectImagesContainer {
+  scroll-behavior: smooth;
+  scrollbar-color: #8ecae6 #0b132b;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+  scroll-behavior: smooth;
+  background-color: #0b132b;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #8ecae6;
+  border-radius: 20px;
+}
+.active::before {
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #0094c6;
+  position: absolute;
+  bottom: -2px;
+  transition: 0.5s ease-in-out;
+}
+.hoverItem:hover {
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #0094c6;
+  position: absolute;
+  bottom: -2px;
+  transition: 0.5s ease-in-out;
+}
+.transitionClass {
+  transition: 0.7s ease-in-out;
+}
+.projectCard:hover {
+  .upRightFlesh {
+    margin-bottom: 4px;
+    margin-left: 6px;
+  }
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px white solid;
+  border-radius: 4px;
+}
+.homeContainer {
+  display: grid;
+  grid-template-columns: 20% 70%;
+}
+.skills {
+  border-radius: 4px;
+  max-width: 50px;
+  max-height: 50px;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 640px) {
+  .homeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: white-smo;
+  }
+  .navbar ul {
+    display: none;
+  }
+  .navbar div {
+    display: flex;
+    align-items: center;
+  }
+}
