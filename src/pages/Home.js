@@ -8,58 +8,45 @@ import Technologies from "../components/technologies.js";
 import Drawer from "../components/Drawer.js";
 const Home = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const aboutRef = useRef(null);
-  const journeyRef = useRef(null);
-  const projectsRef = useRef(null);
-  const contactRef = useRef(null);
-  const skillsRef = useRef(null);
+  const drawerRef = useRef(null);
+  const navbarRef = useRef(null);
   const [activeList, setActiveList] = useState("about");
+  const handleVisibleSection = (sectionName) => setActiveList(sectionName);
+
   useEffect(() => {
-    const changeActiveSection = () => {
+    const clickOutside = (e) => {
       if (
-        aboutRef.current &&
-        contactRef.current &&
-        journeyRef.current &&
-        projectsRef.current
-      ) {
-        const windowHeight = window.pageYOffset;
-        const aboutHeight = aboutRef.current.offsetHeight;
-        const skillsHeight = aboutHeight + skillsRef.current.offsetHeight;
-        const journeyHeight = journeyRef.current.offsetHeight + skillsHeight;
-        const projectsHeight = journeyHeight + projectsRef.current.offsetHeight;
-        if (windowHeight >= 0 && windowHeight <= aboutHeight)
-          setActiveList("about");
-        else if (windowHeight > aboutHeight && windowHeight <= skillsHeight)
-          setActiveList("technologies");
-        else if (windowHeight > skillsHeight && windowHeight <= journeyHeight)
-          setActiveList("journey");
-        else if (windowHeight > journeyHeight && windowHeight <= projectsHeight)
-          setActiveList("projects");
-        else if (windowHeight > projectsHeight) setActiveList("contact");
-        console.log(windowHeight, projectsHeight);
-      }
+        drawerRef.current &&
+        navbarRef.current &&
+        isDrawerOpen &&
+        !drawerRef.current.contains(e.target) &&
+        !navbarRef.current.contains(e.target)
+      )
+        setIsDrawerOpen(false);
     };
-    document.addEventListener("scroll", changeActiveSection);
-    return () => document.removeEventListener("scroll", changeActiveSection);
-  }, []);
+    document.addEventListener("mousedown", clickOutside);
+    return () => document.removeEventListener("mousedown", clickOutside);
+  });
   return (
-    <div className="homeContainer z-20 overflow-x-hidden font-mono">
+    <div className="homeContainer  z-20 overflow-x-hidden font-mono">
       <Navbar
         activeList={activeList}
         isDrawerOpen={isDrawerOpen}
         setActiveList={(l) => setActiveList(l)}
+        navbarRef={navbarRef}
         toogleDrawer={() => setIsDrawerOpen(!isDrawerOpen)}
       />
       <Drawer
         isDrawerOpen={isDrawerOpen}
         closeDrawer={() => setIsDrawerOpen(false)}
+        drawerRef={drawerRef}
       />
-      <div className="flex flex-col">
-        <About aboutRef={aboutRef} />
-        <Technologies skillsRef={skillsRef} />
-        <Journey journeyRef={journeyRef} />
-        <Projects projectsRef={projectsRef} />
-        <Contact contactRef={contactRef} />
+      <div className="flex flex-col gap-10">
+        <About handleVisibleSection={handleVisibleSection} />
+        <Technologies handleVisibleSection={handleVisibleSection} />
+        <Journey handleVisibleSection={handleVisibleSection} />
+        <Projects handleVisibleSection={handleVisibleSection} />
+        <Contact handleVisibleSection={handleVisibleSection} />
       </div>
     </div>
   );

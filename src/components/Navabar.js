@@ -3,19 +3,19 @@ import { IoCloseSharp } from "react-icons/io5";
 const Navbar = ({
   setActiveList,
   activeList,
-  closeDrawer,
   isDrawerOpen,
   toogleDrawer,
+  navbarRef,
 }) => {
   return (
-    <header>
+    <header ref={navbarRef}>
       <nav className="navbar z-30 h-full top-0 border-gray-700 justify-center fixed  flex-col flex ">
         <ul className="text-gray-500 flex flex-col p-4  gap-4 font-semibold text-[20px]">
           <li
             className={`${activeList === "about" && "active text-white transitionClass transition-colors scale-105"}  w-fit relative cursor-pointer`}
           >
             <a onClick={() => setActiveList("about")} href="#">
-              About
+              About Me
             </a>
           </li>
           <li

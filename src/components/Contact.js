@@ -1,5 +1,8 @@
-import { useState } from "react";
-const Contact = ({ contactRef }) => {
+import { useState, useEffect, useRef } from "react";
+import useIsVisible from "../hooks/useIsVisible";
+const Contact = ({ handleVisibleSection }) => {
+  const contactRef = useRef();
+  const isVisible = useIsVisible(contactRef);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,13 +15,19 @@ const Contact = ({ contactRef }) => {
     e.preventDefault();
   };
   console.log(formData);
+  useEffect(() => {
+    if (isVisible) handleVisibleSection("contact");
+  }, [isVisible]);
   return (
     <section
       ref={contactRef}
       id="contact"
       className="relative p-6 mb-6 h-screen "
     >
-      <h className=" font-extrabold text-white text-2xl tracking-wider    border-b-[3px]  border-b-[#0094c6] p-2  ">
+      <h
+        className=" font-extrabold text-white text-2xl tracking-wider border-b-[3px]
+        border-b-[#0094c6] p-2  "
+      >
         Contact :
       </h>
       <div className="flex items-center flex-1  gap-8 flex-col h-full justify-center text-white   ">
@@ -37,7 +46,8 @@ const Contact = ({ contactRef }) => {
             onChange={handleFormDataChange}
             type="text"
             placeholder="Name"
-            className="p-3  w-full hover:border-gray-700 transitionClass border  rounded-lg border-gray-800 bg-transparent"
+            className="p-3  w-full hover:border-gray-700 transitionClass border rounded-lg 
+            border-gray-800 bg-transparent"
           />
           <input
             required
@@ -46,7 +56,8 @@ const Contact = ({ contactRef }) => {
             name="email"
             type="email"
             placeholder="Email"
-            className="p-3 w-full border hover:border-gray-700 transitionClass rounded-lg border-gray-800 bg-transparent"
+            className="p-3 w-full border hover:border-gray-700 transitionClass rounded-lg 
+            border-gray-800 bg-transparent"
           />
           <textarea
             required
@@ -60,7 +71,7 @@ const Contact = ({ contactRef }) => {
           <button
             className="self-start hover:bg-[#005e7c] p-2 px-4 border-white border
             rounded-[4px] text-white transitionClass transition-colors font-bold
-             hover:text-black self-center"
+             hover:text-black"
           >
             Send Message
           </button>
