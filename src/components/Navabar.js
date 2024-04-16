@@ -1,12 +1,25 @@
+import { useState, useEffect, useRef } from "react";
+import Drawer from "./Drawer";
 import { FaBars } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
-const Navbar = ({
-  setActiveList,
-  activeList,
-  isDrawerOpen,
-  toogleDrawer,
-  navbarRef,
-}) => {
+const Navbar = ({ setActiveList, activeList }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navbarRef = useRef(null);
+  const menuRef = useRef(null);
+  useEffect(() => {
+    const clickOutside = (e) => {
+      if (
+        menuRef.current &&
+        navbarRef.current &&
+        isMenuOpen &&
+        !menuRef.current.contains(e.target) &&
+        !navbarRef.current.contains(e.target)
+      )
+        setIsMenuOpen(false);
+    };
+    document.addEventListener("mousedown", clickOutside);
+    return () => document.removeEventListener("mousedown", clickOutside);
+  });
   return (
     <header ref={navbarRef}>
       <nav className="navbar z-30 h-full top-0 border-gray-700 justify-center fixed  flex-col flex ">
@@ -54,13 +67,18 @@ const Navbar = ({
           <h1 className="font-semibold tracking-wider text-xl">Totib</h1>
           <button
             className="hover:opacity-80 transition-all rounded-full"
-            onClick={toogleDrawer}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isDrawerOpen ? <IoCloseSharp className="text-2xl" /> : <FaBars />}
+            {isMenuOpen ? <IoCloseSharp className="text-2xl" /> : <FaBars />}
           </button>
         </div>
         <div className="sm:hidden h-[1px] w-full bg-gray-700 z-50 flex " />
       </nav>
+      <Drawer
+        isMenuOpen={isMenuOpen}
+        menuRef={menuRef}
+        closeMenu={() => setIsMenuOpen(false)}
+      />
     </header>
   );
 };

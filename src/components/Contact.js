@@ -1,8 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import useIsVisible from "../hooks/useIsVisible";
-const Contact = ({ handleVisibleSection }) => {
-  const contactRef = useRef();
-  const isVisible = useIsVisible(contactRef);
+import { useState } from "react";
+const Contact = ({ contactRef }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,10 +11,6 @@ const Contact = ({ handleVisibleSection }) => {
   const handleSubmitFormData = (e) => {
     e.preventDefault();
   };
-  console.log(formData);
-  useEffect(() => {
-    if (isVisible) handleVisibleSection("contact");
-  }, [isVisible]);
   return (
     <section
       ref={contactRef}
@@ -34,7 +27,6 @@ const Contact = ({ handleVisibleSection }) => {
         <p className="text-lg font font-medium text-gray-400">
           Shot me an email directly on
           <span className="font-bold text-gray-200 tracking-wider">
-            {" "}
             yousseftaoussi894@gmail.com
           </span>
         </p>

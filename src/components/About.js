@@ -1,14 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import useIsVisible from "../hooks/useIsVisible";
-const About = ({ handleVisibleSection }) => {
-  const aboutRef = useRef(null);
-  const isVisible = useIsVisible(aboutRef);
-  useEffect(() => {
-    if (isVisible) {
-      handleVisibleSection("about");
-      console.log("about isVisible");
-    } else console.log("about is unvisible");
-  }, [isVisible]);
+const About = ({ aboutRef }) => {
   return (
     <section
       ref={aboutRef}

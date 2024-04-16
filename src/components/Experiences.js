@@ -1,19 +1,12 @@
-import { useEffect, useRef } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import data from "../assets/data/journey";
-import useIsVisible from "../hooks/useIsVisible";
-const Journey = ({ handleVisibleSection }) => {
-  const journeyRef = useRef();
-  const isVisible = useIsVisible(journeyRef);
-  useEffect(() => {
-    if (isVisible) handleVisibleSection("journey");
-  }, [isVisible]);
+const Journey = ({ journeyRef }) => {
   return (
-    <section ref={journeyRef} id="journey" className="p-6 flex flex-col  ">
+    <section ref={journeyRef} id="journey" className="p-6 flex flex-col">
       <h
         className=" font-extrabold text-white mb-4  text-2xl tracking-wider
         border-b-[3px]  border-b-[#0094c6] p-2  w-fit  "

@@ -1,20 +1,10 @@
-import { useEffect, useRef } from "react";
-import useIsVisible from "../hooks/useIsVisible";
 import skillsImageUrls from "../assets/data/skills";
-const Technologies = ({ handleVisibleSection }) => {
-  const skillsRef = useRef();
-  const isVisible = useIsVisible(skillsRef);
-  useEffect(() => {
-    if (isVisible) {
-      handleVisibleSection("technologies");
-      console.log("skilll isVisible");
-    } else console.log("skilll is unvisible");
-  }, [isVisible]);
+const Technologies = ({ technologiesRef }) => {
   return (
     <section
       id="technologies"
-      className=" flex gap-14 p-4 mt-6   sm:p-0 items-center justify-center  flex-col"
-      ref={skillsRef}
+      className="flex gap-14 p-4 mt-6 sm:p-0 items-center justify-center flex-col"
+      ref={technologiesRef}
     >
       <h
         className=" font-extrabold justify-center  self-start justify-self-start text-2xl
@@ -26,7 +16,8 @@ const Technologies = ({ handleVisibleSection }) => {
         {skillsImageUrls.map((url) => (
           <img
             src={url}
-            className="skills border-b hover:scale-105 transition-all cursor-pointer border-r border-[#0094c6] p-2"
+            className="skills border-b hover:scale-105 transition-all cursor-pointer border-r
+            border-[#0094c6] p-2"
             alt="skills"
           />
         ))}

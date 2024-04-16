@@ -1,14 +1,7 @@
-import { useEffect, useRef } from "react";
-import useIsVisible from "../hooks/useIsVisible";
 import CardProject from "./CardProject";
 import { FaArrowRightLong } from "react-icons/fa6";
 import projectsData from "../assets/data/projectsData";
-const Projects = ({ handleVisibleSection }) => {
-  const projectsRef = useRef(null);
-  const isVisible = useIsVisible(projectsRef);
-  useEffect(() => {
-    if (isVisible) handleVisibleSection("projects");
-  }, [isVisible]);
+const Projects = ({ projectsRef }) => {
   return (
     <section
       ref={projectsRef}
