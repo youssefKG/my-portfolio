@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Drawer from "./Drawer";
 import { FaBars } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
+import { motion } from "framer-motion";
 const Navbar = ({ setActiveList, activeList }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarRef = useRef(null);
@@ -21,45 +22,78 @@ const Navbar = ({ setActiveList, activeList }) => {
     return () => document.removeEventListener("mousedown", clickOutside);
   });
   return (
-    <header ref={navbarRef}>
+    <motion.header
+      initial={{
+        opacity: 0.5,
+        x: -500,
+        scale: 0.5,
+      }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        x: 0,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+      ref={navbarRef}
+    >
       <nav className="navbar z-30 h-full top-0 border-gray-700 justify-center fixed  flex-col flex ">
         <ul className="text-gray-500 flex flex-col p-4  gap-4 font-semibold text-[20px]">
           <li
-            className={`${activeList === "about" && "active text-white transitionClass transition-colors scale-105"}  w-fit relative cursor-pointer`}
+            className={`${activeList === "about" && "text-white opacity-100 transitionClass  transition-colors scale-110 scal"} opacity-75  w-fit relative cursor-pointer`}
           >
             <a onClick={() => setActiveList("about")} href="#">
-              About Me
+              <p>
+                <span className="text-[#0094c6] pr-4">{"{"}</span>
+                About Me
+                <span className="text-[#0094c6] pl-4">{"}"}</span>
+              </p>
             </a>
           </li>
           <li
-            className={`${activeList === "technologies" && "active text-white transitionClass scale-105"} w-fit relative`}
+            className={`opacity-75 ${activeList === "technologies" && "text-white transitionClass scale-110"} w-fit relative`}
           >
             <a
               onClick={() => setActiveList("technologies")}
               href="#technologies"
             >
-              Technologies
+              <p>
+                <span className="text-[#0094c6] pr-4">{"{"}</span>
+                Technologies
+                <span className="text-[#0094c6] pl-4">{"}"}</span>
+              </p>
             </a>
           </li>
           <li
-            className={`${activeList === "journey" && "active text-white transitionClass scale-105"} w-fit relative`}
+            className={`${activeList === "journey" && "text-white transitionClass scale-110"} opacity-75 w-fit relative`}
           >
             <a onClick={() => setActiveList("journey")} href="#journey">
-              Journey
+              <p>
+                <span className="text-[#0094c6] pr-4">{"{"}</span>
+                Journey
+                <span className="text-[#0094c6] pl-4">{"}"}</span>
+              </p>
             </a>
           </li>
           <li
-            className={`${activeList === "projects" && "active text-white transitionClass transition-colors scale-105"} relative w-fit`}
+            className={`${activeList === "projects" && "text-white transitionClass transition-colors scale-110"} opacity-75 relative w-fit`}
           >
             <a onClick={() => setActiveList("projects")} href="#projects">
-              Projects
+              <p>
+                <span className="text-[#0094c6] pr-4">{"{"}</span>
+                Projects
+                <span className="text-[#0094c6] pl-4">{"}"}</span>
+              </p>
             </a>
           </li>
           <li
-            className={`${activeList === "contact" && "active text-white transitionClass transition-colors scale-105"} relative w-fit`}
+            className={`opacity-75 ${activeList === "contact" && "text-white transitionClass transition-colors scale-110"} relative w-fit`}
           >
             <a onClick={() => setActiveList("contact")} href="#contact">
+              <span className="text-[#0094c6] pr-4">{"{"}</span>
               Contact
+              <span className="text-[#0094c6] pl-4">{"}"}</span>
             </a>
           </li>
         </ul>
@@ -79,7 +113,7 @@ const Navbar = ({ setActiveList, activeList }) => {
         menuRef={menuRef}
         closeMenu={() => setIsMenuOpen(false)}
       />
-    </header>
+    </motion.header>
   );
 };
 

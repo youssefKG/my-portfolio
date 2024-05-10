@@ -47,7 +47,8 @@ html {
   transition: 0.5s ease-in-out;
 }
 .transitionClass {
-  transition: 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+  opacity: 1;
 }
 .projectCard:hover {
   .upRightFlesh {
@@ -67,7 +68,6 @@ html {
   grid-template-columns: 20% 70%;
 }
 .skills {
-  border-radius: 8px;
   max-width: 180px;
   max-height: 180px;
   width: 100%;

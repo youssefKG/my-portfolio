@@ -37,7 +37,7 @@ const Home = () => {
   const handleVisibleSection = (sectionName) => setActiveList(sectionName);
   return (
     <div className="homeContainer  z-20 overflow-x-hidden font-mono">
-      <Navbar activeList={activeList} />
+      <Navbar activeList={activeList} setActiveList={setActiveList} />
       <div className="flex flex-col gap-10">
         <About
           visibleSection={activeList}

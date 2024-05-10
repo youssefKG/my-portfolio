@@ -1,6 +1,21 @@
+import { motion } from "framer-motion";
+
 const About = ({ aboutRef }) => {
   return (
-    <section
+    <motion.section
+      initial={{
+        x: 800,
+        scale: 0.5,
+        opacity: 0,
+      }}
+      whileInView={{
+        scale: 1,
+        opacity: 1,
+        x: 0,
+      }}
+      transition={{
+        duration: 1,
+      }}
       ref={aboutRef}
       id=""
       className="h-screen  flex flex-col justify-center items-center gap-8 relative
@@ -27,10 +42,14 @@ const About = ({ aboutRef }) => {
             <p className="max-w-xl border-dotted  border-gray-600 border-x p-8 tracking-wider text-gray-200">
               Hi There, I'm{" "}
               <span className="font-semibold text-[#0094c6]">
-                Youssed Taoussi
-              </span>{" "}
-              I'm a self-motivated and detail-oriented MERN stack developer with
-              a good understanding of the HTML, CSS ans Javascript concepts
+                Youssed Taoussi{" "}
+              </span>
+              I'm a self-motivated and detail-oriented
+              <span className="font-semibold text-[#0094c6]">
+                {" "}
+                MERN stack developer{" "}
+              </span>
+              with a good understanding of the HTML, CSS ans Javascript concepts
               necessary to build interactive and pixel-perfect user interface
               designs to serve-side back-end programming. Keen to gain more
               experience in software development and everything in its orbit
@@ -47,7 +66,7 @@ const About = ({ aboutRef }) => {
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 export default About;

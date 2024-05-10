@@ -14,6 +14,10 @@ const projectsData = [
     description:
       " The CRUD Task Manager project is an extensive web application designed to streamline task management processes. Leveraging the power of React.js for the frontend, Node.js with Express.js for the backend, and MySQL for database management, this project offers a comprehensive solution for organizing tasks efficiently. The user interface is meticulously crafted using Tailwind CSS, ensuring a visually pleasing and responsive design that adapts seamlessly to different screen sizes and devices. Users are provided with a secure authentication system, allowing them to sign in and access their personalized task lists. Once authenticated, users can perform a myriad of actions including creating new tasks with detailed descriptions, setting due dates, assigning priorities, and categorizing tasks. The application facilitates easy navigation through tasks, enabling users to view, update, and delete tasks effortlessly. Each task's information is stored in a MySQL database, with Sequelize or similar ORM libraries handling data modeling and interactions, ensuring optimal performance and scalability. With its intuitive interface and robust functionality, the CRUD Task Manager empowers users to stay organized, boost productivity, and effectively manage their workload.",
     tec: ["reactjs", "nodejs", "expressjs", "mysql", "tailwindcss"],
+    demo: {
+      email: "yousseftaussi894@gmail.com",
+      password: 1234,
+    },
   },
   {
     id: 2,
@@ -38,6 +42,10 @@ const projectsData = [
       "Socket.io",
       "WebSocket",
     ],
+    demo: {
+      email: "yousseftaussi894@gmail.com",
+      password: 1234,
+    },
   },
   {
     id: 3,
@@ -62,6 +70,10 @@ const projectsData = [
       "Socket.io",
       "WebSocket",
     ],
+    demo: {
+      email: "yousseftaussi894@gmail.com",
+      password: 1234,
+    },
   },
 ];
 export default projectsData;
