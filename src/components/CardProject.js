@@ -1,4 +1,10 @@
 import { FiArrowUpRight } from "react-icons/fi";
+import {
+  transition,
+  initial,
+  animate as whileInView,
+  viewPort,
+} from "../utils/animation";
 import { FaShare } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +14,11 @@ const CardProject = ({ info }) => {
 
   return (
     <motion.button
-      initial={{ x: 700, scale: 0.5, opacity: 0 }}
-      whileInView={{ opacity: 1, scale: 1, x: [-90, 30, 0] }}
-      transition={{ duration: 0.1, ease: [0.17, 0.67, 0.83, 0.67] }}
-      viewport={{ once: true }}
+      initial={initial}
+      whileInView={whileInView}
+      transition={transition}
       onClick={() => navigate("/project/" + info.id)}
-      to={`/project/${info.id}`}
+      viewport={viewPort}
       className="projectCard flex items-center flex-col  gap-4  relative pt-12
       hover:scale-105 border  border-gray-800 cursor-pointer hover:opacity-100
       transitionClass bg-[#001242]/40 hover:bg-[#040f16]/60
@@ -72,4 +77,5 @@ const CardProject = ({ info }) => {
     </motion.button>
   );
 };
+
 export default CardProject;

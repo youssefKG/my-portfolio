@@ -1,16 +1,20 @@
 import { useState } from "react";
+
 const Contact = ({ contactRef }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const handleFormDataChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmitFormData = (e) => {
     e.preventDefault();
   };
+
   return (
     <section
       ref={contactRef}
@@ -72,4 +76,5 @@ const Contact = ({ contactRef }) => {
     </section>
   );
 };
+
 export default Contact;

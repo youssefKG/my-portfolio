@@ -13,28 +13,15 @@ const Home = () => {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
   const [activeList, setActiveList] = useVisibleSection([
-    {
-      ref: aboutRef,
-      refName: "about",
-    },
-    {
-      ref: technologiesRef,
-      refName: "technologies",
-    },
-    {
-      ref: journeyRef,
-      refName: "journey",
-    },
-    {
-      ref: projectsRef,
-      refName: "projects",
-    },
-    {
-      ref: contactRef,
-      refName: "contact",
-    },
+    { ref: aboutRef, refName: "about" },
+    { ref: technologiesRef, refName: "technologies" },
+    { ref: journeyRef, refName: "journey" },
+    { ref: projectsRef, refName: "projects" },
+    { ref: contactRef, refName: "contact" },
   ]);
+
   const handleVisibleSection = (sectionName) => setActiveList(sectionName);
+
   return (
     <div className="homeContainer  z-20 overflow-x-hidden font-mono">
       <Navbar activeList={activeList} setActiveList={setActiveList} />
@@ -68,4 +55,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;

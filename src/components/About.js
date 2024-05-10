@@ -1,21 +1,16 @@
 import { motion } from "framer-motion";
+import {
+  initial,
+  animate as whileInView,
+  transition,
+} from "../utils/animation";
 
 const About = ({ aboutRef }) => {
   return (
     <motion.section
-      initial={{
-        x: 800,
-        scale: 0.5,
-        opacity: 0,
-      }}
-      whileInView={{
-        scale: 1,
-        opacity: 1,
-        x: 0,
-      }}
-      transition={{
-        duration: 1,
-      }}
+      initial={initial}
+      whileInView={whileInView}
+      transition={transition}
       ref={aboutRef}
       id=""
       className="h-screen  flex flex-col justify-center items-center gap-8 relative

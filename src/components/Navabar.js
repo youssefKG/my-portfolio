@@ -24,18 +24,19 @@ const Navbar = ({ setActiveList, activeList }) => {
   return (
     <motion.header
       initial={{
-        opacity: 0.5,
-        x: -500,
-        scale: 0.5,
+        opacity: 0,
+        y: 100,
+        scale: 0,
       }}
       animate={{
         scale: 1,
         opacity: 1,
-        x: 0,
+        y: 0,
       }}
       transition={{
-        duration: 1.5,
+        duration: 0.7,
       }}
+      viewport={{ once: true }}
       ref={navbarRef}
     >
       <nav className="navbar z-30 h-full top-0 border-gray-700 justify-center fixed  flex-col flex ">
